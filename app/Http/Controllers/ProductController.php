@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use App\Models\ProductGallery;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -54,7 +55,12 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $items = ProductGallery::with('product')->where('product_id', $id)->get();
+        return view('pages.products.show')->with([
+            'product' => $product,
+            'items' => $items
+        ]);
     }
 
     /**
@@ -98,6 +104,7 @@ class ProductController extends Controller
     {
         $productId = Product::findOrFail($id);
         $productId->delete();
+        ProductGallery::where('product_id', $id)->delete();
         return redirect()->route('product.index');
     }
 }

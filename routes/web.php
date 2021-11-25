@@ -19,6 +19,10 @@ use App\Http\Controllers\ProductGalleryController;
 
 Route::get('/', [DashboardController::class,'index'])->middleware(['auth'])->name('dashboard');
 Route::resource('product',ProductController::class);
+
 Route::get('/gallery',[ProductGalleryController::class,'index'])->name('gallery');
+Route::get('/gallery/create',[ProductGalleryController::class,'create'])->name('gallery.create');
+Route::post('/gallery/store',[ProductGalleryController::class,'store'])->name('gallery.store');
 Route::delete('/gallery/{id}',[ProductGalleryController::class,'destroy'])->name('gallery.destroy');
+
 require __DIR__.'/auth.php';

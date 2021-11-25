@@ -11,6 +11,7 @@ class ProductGallery extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $table = 'product_galleries';
     protected $fillable = [
         'product_id','photo','is_default'
     ];
@@ -22,6 +23,6 @@ class ProductGallery extends Model
 
     public function getPhotoAttribut($value)
     {
-        return url('storage/'.$value);
+        return url('storage/' . $value);
     }
 }
