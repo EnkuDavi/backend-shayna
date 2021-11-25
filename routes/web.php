@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductGalleryController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,6 @@ Route::get('/gallery/create',[ProductGalleryController::class,'create'])->name('
 Route::post('/gallery/store',[ProductGalleryController::class,'store'])->name('gallery.store');
 Route::delete('/gallery/{id}',[ProductGalleryController::class,'destroy'])->name('gallery.destroy');
 
+
+Route::resource('transaction',TransactionController::class);
 require __DIR__.'/auth.php';

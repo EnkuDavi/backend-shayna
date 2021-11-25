@@ -32,7 +32,7 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->type }}</td>
-                                            <td>{{ $product->price }}</td>
+                                            <td>@indo_currency($product->price)</td>
                                             <td>{{ $product->quantity }}</td>
                                             <td>
                                                 <a href="{{ route('product.show',$product->id) }}" class="btn btn-info btn-sm">
