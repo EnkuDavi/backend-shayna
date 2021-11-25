@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,6 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', [DashboardController::class,'index'])->middleware(['auth'])->name('dashboard');
 Route::resource('product',ProductController::class);
+Route::get('/gallery',[ProductGalleryController::class,'index'])->name('gallery');
+Route::delete('/gallery/{id}',[ProductGalleryController::class,'destroy'])->name('gallery.destroy');
 require __DIR__.'/auth.php';
