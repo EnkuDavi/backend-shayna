@@ -28,4 +28,5 @@ Route::delete('/gallery/{id}',[ProductGalleryController::class,'destroy'])->name
 
 
 Route::resource('transaction',TransactionController::class);
+Route::get('/transaction/{id}/set-status',[TransactionController::class,'setStatus'])->name('transaction.status');
 require __DIR__.'/auth.php';
